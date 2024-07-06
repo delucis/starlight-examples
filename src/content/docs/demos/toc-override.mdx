@@ -1,0 +1,15 @@
+---
+title: Table of contents override
+description: Use the current page title as the title for the table of contents
+---
+
+import StackBlitz from '../../../components/StackBlitz.astro';
+
+This example demonstrates a [component override](https://starlight.astro.build/guides/overriding-components/) of Starlight’s `<PageSidebar>` component to use the page title as the title of the table of contents instead of the default “On this Page” label.
+
+<StackBlitz
+	projectId="github-3upbeu"
+	options={{
+		openFile: 'astro.config.mjs,src/overrides/PageSidebar.astro',
+	}}
+/>

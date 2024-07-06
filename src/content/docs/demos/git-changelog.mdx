@@ -1,0 +1,25 @@
+---
+title: Generate a changelog with Git
+description: A custom page that renders a list of changes to the current repo using Git
+---
+
+import StackBlitz from '../../../components/StackBlitz.astro';
+
+This example demonstrates a custom page, which uses Git to generate a list of changes for the current repo.
+
+:::note
+
+This example does not work on StackBlitz as Git is not available in the browser environment.
+
+To test it, download the project, initialize Git, and make some commits.
+
+:::
+
+<StackBlitz
+	projectId="github-wscelw"
+	options={{
+		openFile: 'src/pages/docs-changes.astro',
+		showSidebar: true,
+		clickToLoad: true,
+	}}
+/>

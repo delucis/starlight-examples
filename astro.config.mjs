@@ -18,6 +18,7 @@ export default defineConfig({
 					autogenerate: { directory: 'demos' },
 				},
 			],
+			credits: true,
 		}),
 	],
 });

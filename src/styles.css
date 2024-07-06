@@ -3,6 +3,10 @@
 	--sl-content-width: 70rem;
 }
 
-.sl-markdown-content *:not(:where(stack-blitz, stack-blitz *)) {
+.sl-markdown-content {
+	text-wrap: pretty;
+}
+
+.sl-markdown-content :is(p, li):not(:where(stack-blitz, stack-blitz *)) {
 	max-width: 45rem;
 }

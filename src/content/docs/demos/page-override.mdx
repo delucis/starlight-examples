@@ -1,0 +1,17 @@
+---
+title: Custom page component
+description: Take full control over page rendering by overriding Starlight’s Page component
+---
+
+import StackBlitz from '../../../components/StackBlitz.astro';
+
+This example demonstrates using Vite’s `resolve.alias` config to override Starlight’s top-level page template.
+
+Overriding the page component is not officially supported and will require a lot of work to reimplement features, but is an option if you want to use Starlight for routing and i18n, but take full control of the page layout.
+
+<StackBlitz
+	projectId="github-ixrwlq"
+	options={{
+		openFile: 'src/PageOverride.astro,astro.config.mjs',
+	}}
+/>

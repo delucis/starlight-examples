@@ -1,0 +1,17 @@
+---
+title: Multiple sidebars
+description: Display a different site navigation on different pages
+---
+
+import StackBlitz from '../../../components/StackBlitz.astro';
+
+This example demonstrates using [component overrides](https://starlight.astro.build/guides/overriding-components/) to filter Starlight’s sidebar and display different navigation options on different pages.
+
+In this example, the site documents two products. The sidebar is customized to only display links for the current product and pagination links in the page footer are customized to hide links between the two products.
+
+<StackBlitz
+	projectId="github-dubgkv"
+	options={{
+		openFile: 'astro.config.mjs,src/overrides/Pagination.astro,src/overrides/Sidebar.astro',
+	}}
+/>
