@@ -14,6 +14,9 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.25.0
         version: 0.25.0(astro@4.11.5(typescript@5.5.3))
+      '@stackblitz/sdk':
+        specifier: ^1.11.0
+        version: 1.11.0
       astro:
         specifier: ^4.10.2
         version: 4.11.5(typescript@5.5.3)
@@ -623,6 +626,9 @@ packages:
 
   '@shikijs/core@1.10.1':
     resolution: {integrity: sha512-qdiJS5a/QGCff7VUFIqd0hDdWly9rDp8lhVmXVrS11aazX8LOTRLHAXkkEeONNsS43EcCd7gax9LLoOz4vlFQA==}
+
+  '@stackblitz/sdk@1.11.0':
+    resolution: {integrity: sha512-DFQGANNkEZRzFk1/rDP6TcFdM82ycHE+zfl9C/M/jXlH68jiqHWHFMQURLELoD8koxvu/eW5uhg94NSAZlYrUQ==}
 
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -2927,6 +2933,8 @@ snapshots:
     optional: true
 
   '@shikijs/core@1.10.1': {}
+
+  '@stackblitz/sdk@1.11.0': {}
 
   '@types/acorn@4.0.6':
     dependencies:

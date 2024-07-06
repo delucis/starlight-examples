@@ -1,0 +1,45 @@
+---
+import type { EmbedOptions } from '@stackblitz/sdk';
+
+interface Props {
+	projectId: string;
+	options: EmbedOptions;
+}
+const { projectId, options } = Astro.props;
+---
+
+<stack-blitz data-project-id={projectId} data-embed-options={JSON.stringify(options)}>
+	<div class="sb-iframe"></div>
+</stack-blitz>
+
+<script>
+	import sdk, { type EmbedOptions } from '@stackblitz/sdk';
+
+	class StackBlitz extends HTMLElement {
+		constructor() {
+			super();
+			const { projectId, embedOptions } = this.dataset;
+			let options: EmbedOptions = {};
+			if (!projectId) return;
+			try {
+				options = JSON.parse(embedOptions || '{}');
+			} catch {}
+			sdk.embedProjectId(this.querySelector('div')!, projectId, options);
+		}
+	}
+	customElements.define('stack-blitz', StackBlitz);
+</script>
+
+<style>
+	stack-blitz {
+		display: block;
+	}
+
+	.sb-iframe {
+		margin-block: 2rem;
+		border: none;
+		background-color: var(--sl-color-gray-6);
+		box-shadow: var(--sl-shadow-lg);
+		height: 40rem !important;
+	}
+</style>
