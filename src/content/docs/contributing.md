@@ -36,5 +36,10 @@ Short introduction to your example.
 ```
 
 - Replace `PROJECT-ID` with the id of your StackBlitz example. This is often something like `github-reja36`.
-- Update the value of the `openFile` option with paths to the key files in your example.
+- Update the value of the [`openFile`](https://developer.stackblitz.com/platform/api/javascript-sdk-options#openfileoption) option with paths to the files in your example a user will need to refer to.
+  The syntax is a string of filepaths, separated by commas.
+  Common examples here include:
+  - custom components or overrides used in your example
+  - `astro.config.mjs` if the example demonstrates specific configuration
+  - content files that are using or describing your technique
 - If needed, the `<StackBlitz>` component accepts any of the [`EmbedOptions`](https://developer.stackblitz.com/platform/api/javascript-sdk-options#embedoptions) documented in StackBlitz’s SDK docs.
