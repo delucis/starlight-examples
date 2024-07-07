@@ -1,0 +1,18 @@
+<div class="smol-css-grid not-content"><slot /></div>
+<style>
+	/* Thx Stephanie Eckles 💖 https://smolcss.dev/#smol-css-grid */
+	.smol-css-grid {
+		--min: 30ch;
+		--gap: 1rem;
+
+		display: grid;
+		grid-gap: var(--gap);
+		/* min() with 100% prevents overflow in extra narrow spaces */
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+	}
+	@media (min-width: 50rem) {
+		.smol-css-grid {
+			--gap: 1.5rem;
+		}
+	}
+</style>
