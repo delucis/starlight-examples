@@ -5,7 +5,8 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'StarBlitz',
+			title: 'Starlight Examples',
+			description: 'Examples of how to do stuff with Astro Starlight',
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
