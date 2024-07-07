@@ -19,8 +19,8 @@ export default defineConfig({
 			sidebar: [
 				{ slug: 'index', label: 'Home' },
 				{
-					label: 'Demos',
-					autogenerate: { directory: 'demos' },
+					label: 'Examples',
+					autogenerate: { directory: 'examples' },
 				},
 				'contributing',
 			],

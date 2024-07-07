@@ -9,7 +9,7 @@ We’d love to see it!
 
 1. Create an example on StackBlitz. Get started quickly with the [Starlight template](https://astro.new/starlight-basics).
 
-2. [Open a PR](https://github.com/delucis/starlight-examples/) on GitHub adding a new page to the `src/content/docs/demos/` directory.
+2. [Open a PR](https://github.com/delucis/starlight-examples/) on GitHub adding a new page to the `src/content/docs/examples/` directory.
 
 ## Page template
 
