@@ -8,7 +8,7 @@ export default defineConfig({
 			title: 'Starlight Examples',
 			description: 'Examples of how to do stuff with Astro Starlight',
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/delucis/starlight-examples',
 			},
 			customCss: ['./src/styles.css'],
 			tableOfContents: false,
@@ -18,6 +18,7 @@ export default defineConfig({
 					label: 'Demos',
 					autogenerate: { directory: 'demos' },
 				},
+				'contributing',
 			],
 			credits: true,
 		}),
