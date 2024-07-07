@@ -40,6 +40,15 @@ const { projectId, options } = Astro.props;
 		border: none;
 		background-color: var(--sl-color-gray-6);
 		box-shadow: var(--sl-shadow-lg);
-		height: 40rem !important;
+		--vheight: 100vh;
+		height: min(
+			calc(var(--vheight) - var(--sl-nav-height) - var(--sl-content-pad-x)),
+			40rem
+		) !important;
+	}
+	@supports (height: 100svh) {
+		.sb-iframe {
+			--vheight: 100svh;
+		}
 	}
 </style>
