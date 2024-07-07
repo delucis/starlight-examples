@@ -12,7 +12,7 @@ const examples = await getCollection('docs', (entry) => entry.slug.startsWith('e
 			<LinkCard
 				title={demo.data.title}
 				description={demo.data.description}
-				href={'/' + demo.slug}
+				href={'/' + demo.slug + '/'}
 			/>
 		))
 	}

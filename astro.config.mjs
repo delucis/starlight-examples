@@ -7,6 +7,7 @@ const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env
 // https://astro.build/config
 export default defineConfig({
 	site: NETLIFY_PREVIEW_SITE || 'https://starlight-examples.netlify.app/',
+	trailingSlash: 'always',
 	integrations: [
 		starlight({
 			title: 'Starlight Examples',
