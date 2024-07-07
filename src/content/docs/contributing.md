@@ -11,6 +11,8 @@ We’d love to see it!
 
 2. [Open a PR](https://github.com/delucis/starlight-examples/) on GitHub adding a new page to the `src/content/docs/examples/` directory.
 
+By submitting an example, you accept for it to be published under the terms of the [MIT License](https://github.com/delucis/starlight-examples/blob/latest/LICENSE).
+
 ## Page template
 
 Here’s a template you can use for a new page:
