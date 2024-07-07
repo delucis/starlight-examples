@@ -1,5 +1,6 @@
 ---
 title: Contributing
+description: Details about how to contribute a new example to the collection.
 ---
 
 Have you made an example of how to do something with Starlight?

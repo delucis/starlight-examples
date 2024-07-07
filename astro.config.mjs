@@ -26,6 +26,9 @@ export default defineConfig({
 				'contributing',
 			],
 			credits: true,
+			components: {
+				Head: './src/overrides/Head.astro',
+			},
 		}),
 	],
 });
