@@ -12,6 +12,10 @@ We’d love to see it!
 
 2. [Open a PR](https://github.com/delucis/starlight-examples/) on GitHub adding a new page to the `src/content/docs/examples/` directory.
 
+   <a href="https://github.com/delucis/starlight-examples/new/latest/src/content/docs/examples?filename=example.md&value=---%0Atitle%3A%20Short%20title%0Adescription%3A%20Description%20of%20what%20your%20example%20shows%0A---%0A%0Aimport%20StackBlitz%20from%20%27..%2F..%2F..%2Fcomponents%2FStackBlitz.astro%27%3B%0A%0AShort%20introduction%20to%20your%20example.%0A%0A%3CStackBlitz%0A%09projectId%3D%22PROJECT-ID%22%0A%09options%3D%7B%7B%0A%09%09openFile%3A%20%27src%2FPageOverride.astro%2Castro.config.mjs%27%2C%0A%09%7D%7D%0A%2F%3E%0A" target="_blank" noopenerrel="noopener">
+     Create a new page using GitHub’s web UI →
+   </a>
+
 By submitting an example, you accept for it to be published under the terms of the [MIT License](https://github.com/delucis/starlight-examples/blob/latest/LICENSE).
 
 ## Page template
