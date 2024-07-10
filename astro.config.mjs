@@ -15,6 +15,10 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/delucis/starlight-examples',
 			},
+			editLink: {
+				baseUrl: 'https://github.com/delucis/starlight-examples/edit/latest/',
+			},
+			lastUpdated: true,
 			customCss: ['./src/styles.css'],
 			tableOfContents: false,
 			sidebar: [
