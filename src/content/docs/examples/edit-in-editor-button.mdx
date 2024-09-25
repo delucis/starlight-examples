@@ -1,0 +1,17 @@
+---
+title: Edit in editor button
+description: An override that replaces the default edit link with a button to edit the current page in your editor
+---
+
+import StackBlitz from "../../../components/StackBlitz.astro";
+
+This example demonstrates a custom [`<EditLink>` component override](https://starlight.astro.build/reference/overrides/#editlink) that replaces the default edit link with a button to edit the current page in your editor while in development mode.
+
+This feature relies on the [`launch-editor-middleware`](https://github.com/yyx990803/launch-editor#middleware) exposed by Vite.
+
+<StackBlitz
+  projectId="github-mydczx"
+  options={{
+    openFile: "astro.config.mjs,src/components/EditInEditor.astro",
+  }}
+/>
