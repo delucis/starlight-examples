@@ -1,0 +1,16 @@
+---
+title: Syntax highlight component output
+description: Display the syntax-highlighted HTML a component generates using Starlight’s Code component
+---
+
+import StackBlitz from '../../../components/StackBlitz.astro';
+
+This example demonstrates a custom `<HighlightOutput>` component which displays the HTML output of anything passed as children in a syntax-highlighted code block.
+This makes it possible to display a component’s HTML markup to users for example.
+
+<StackBlitz
+	projectId="github-va6vta"
+	options={{
+		openFile: 'src/HighlightOutput.astro,src/content/docs/index.mdx',
+	}}
+/>
