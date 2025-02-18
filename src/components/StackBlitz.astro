@@ -3,7 +3,7 @@ import { HEAD } from 'astro:env/client';
 
 interface Props {
 	/** Name of the directory in `examples/` that contains the code for this example. */
-	localProjectId: string;
+	example: string;
 	/** Title for this example to display in the StackBlitz embed. Also used to provide an accessible label for the embed iframe. */
 	title: string;
 	/** Description of this example to display in the StackBlitz embed. */
@@ -15,13 +15,13 @@ interface Props {
 	/** Set to true to expand the sidebar on load (only works on larger screens). */
 	showSidebar?: boolean;
 }
-const { localProjectId, title, description, openFile, clickToLoad, showSidebar } = Astro.props;
-if (!localProjectId) {
-	throw new Error('Missing props for `<StackBlitz>` component. `localProjectId` is required.');
+const { example, title, description, openFile, clickToLoad, showSidebar } = Astro.props;
+if (!example) {
+	throw new Error('Missing props for `<StackBlitz>` component. `example` is required.');
 }
 
 const embedUrl = new URL(
-	`https://stackblitz.com/github/delucis/starlight-examples/tree/${HEAD}/examples/${localProjectId}`
+	`https://stackblitz.com/github/delucis/starlight-examples/tree/${HEAD}/examples/${example}`
 );
 embedUrl.searchParams.set('embed', '1');
 if (Array.isArray(openFile)) {
