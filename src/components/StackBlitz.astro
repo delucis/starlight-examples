@@ -25,7 +25,7 @@ if (!projectId && !localProjectId) {
 
 <script>
 	import sdk, { type EmbedOptions } from '@stackblitz/sdk';
-	import { BRANCH } from 'astro:env/client';
+	import { HEAD } from 'astro:env/client';
 
 	class StackBlitz extends HTMLElement {
 		constructor() {
@@ -38,7 +38,7 @@ if (!projectId && !localProjectId) {
 				if (projectId) {
 					sdk.embedProjectId(container, projectId, options);
 				} else if (localProjectId) {
-					const repoPath = `delucis/starlight-examples/tree/${BRANCH}/examples/${localProjectId}`;
+					const repoPath = `delucis/starlight-examples/tree/${HEAD}/examples/${localProjectId}`;
 					sdk.embedGithubProject(container, repoPath, options);
 				}
 			} catch {}

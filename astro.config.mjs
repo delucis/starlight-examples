@@ -38,7 +38,7 @@ export default defineConfig({
 	env: {
 		schema: {
 			/** @see https://docs.netlify.com/configure-builds/environment-variables/#git-metadata */
-			BRANCH: envField.string({ access: 'public', context: 'client', default: 'latest' }),
+			HEAD: envField.string({ access: 'public', context: 'client', default: 'latest' }),
 		},
 	},
 });
