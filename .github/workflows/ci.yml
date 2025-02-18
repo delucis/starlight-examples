@@ -28,3 +28,14 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i
       - run: pnpm t -- --skip releases-content-layer
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - run: pnpm i
+      - run: pnpm astro check
