@@ -3,16 +3,17 @@ title: List recent releases with the Content Layer API
 description: A custom page that lists recent releases for a GitHub repository using the Content Layer API
 ---
 
-import StackBlitz from "../../../components/StackBlitz.astro";
+import StackBlitz from '../../../components/StackBlitz.astro';
 
 This example demonstrates a custom page, which uses the Content Layer API to list recent releases for a GitHub repository.
 
 Read [a full write-up of this technique](https://hideoo.dev/notes/starlight-list-recent-github-releases) on HiDeoo’s blog.
 
 <StackBlitz
-  localProjectId="releases-content-layer"
-  options={{
-    openFile:
-      "src/content/config.ts,src/pages/releases.astro,src/components/Release.astro",
-  }}
+	title="Starlight: List recent GitHub releases"
+	description="Learn how to use the experimental Astro Content Layer API to list the recent GitHub releases in a Starlight project"
+	localProjectId="releases-content-layer"
+	options={{
+		openFile: 'src/content/config.ts,src/pages/releases.astro,src/components/Release.astro',
+	}}
 />
