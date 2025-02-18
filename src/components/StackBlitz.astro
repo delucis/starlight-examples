@@ -2,12 +2,18 @@
 import { HEAD } from 'astro:env/client';
 
 interface Props {
+	/** Name of the directory in `examples/` that contains the code for this example. */
 	localProjectId: string;
+	/** Title for this example to display in the StackBlitz embed. Also used to provide an accessible label for the embed iframe. */
 	title: string;
+	/** Description of this example to display in the StackBlitz embed. */
 	description?: string;
 	options: {
+		/** Open files to display in the StackBlitz editor. Comma-separated file names are displayed as tabs. An array of file names is displayed as side-by-side panels. */
 		openFile: string | string[];
+		/** Set to true to display a modal and defer loading the project until a user clicks. */
 		clickToLoad?: boolean;
+		/** Set to true to expand the sidebar on load (only works on larger screens). */
 		showSidebar?: boolean;
 	};
 }
