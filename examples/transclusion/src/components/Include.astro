@@ -1,0 +1,22 @@
+---
+interface Props {
+  file: string;
+}
+
+const { file } = Astro.props;
+
+// Look up all the Markdown files in the includes folder.
+const includes = import.meta.glob('../includes/**/*.md');
+// Find the file that matches the passed `file` prop.
+const loader = includes[`../includes/${file}`];
+
+// Throw an error if an author passes a `file` prop which doesn’t exist.
+if (!loader) {
+  throw new Error(`Could not find \`${file}\`.`)
+}
+
+// Load our content renderer from the file we want to include.
+const { Content } = await loader();
+---
+
+<Content />

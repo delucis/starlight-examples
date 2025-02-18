@@ -1,0 +1,22 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Pagination.astro';
+import PageAuthors from './PageAuthors.astro';
+---
+
+<div>
+  {/*
+    Render our custom component and tell it the repo and file to use.
+    Astro.props.entry.id here is the name of the file inside src/content/docs.
+  */}
+  <PageAuthors repo="withastro/docs" file={Astro.props.entry.id} />
+  <Default {...Astro.props}><slot /></Default>
+</div>
+
+<style>
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+</style>

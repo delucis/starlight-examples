@@ -1,0 +1,23 @@
+---
+title: Welcome to Starlight
+description: Get started building your docs site with Starlight.
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+This example shows an override of Starlight’s `<PageSidebar>` component to use the page title as the title of the table of contents instead of the default “On this Page” label.
+
+## Important files
+
+<FileTree>
+
+- src/
+  - assets/
+  - content/
+  - overrides/
+    - **PageSidebar.astro** This component customizes the table of contents labelling
+  - env.d.ts
+- **astro.config.mjs** The override is configured here
+- package.json
+
+</FileTree>

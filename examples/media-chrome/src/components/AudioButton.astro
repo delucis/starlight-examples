@@ -1,0 +1,21 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+---
+
+
+<media-controller audio class="not-content">
+  <audio slot="media" {src}></audio>
+  <media-control-bar>
+    <media-play-button></media-play-button>
+  </media-control-bar>
+</media-controller>
+
+<script>
+import 'media-chrome/dist/media-controller';
+import 'media-chrome/dist/media-control-bar';
+import 'media-chrome/dist/media-play-button';
+</script>

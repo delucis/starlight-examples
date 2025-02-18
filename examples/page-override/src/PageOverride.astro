@@ -1,0 +1,17 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+
+const { entry, lang, dir } = Astro.props;
+---
+
+<html lang={lang} dir={dir}>
+    <head>
+        <title>{entry.data.title}</title>
+    </head>
+    
+    <body>
+        <h1>{entry.data.title}</h1>
+        <p>Hello from the override</p>
+        <main><slot/></main>
+    </body>
+</html>
