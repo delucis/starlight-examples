@@ -2,43 +2,17 @@
 import child_process from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseArgs } from 'node:util';
 import ora from 'ora';
-import { dim } from 'yoctocolors';
+import { dim, red } from 'yoctocolors';
 
-/**
- * @param {string} command
- * @param {string[]} args
- * @param {{ cwd: string | URL, onError: (err: Error) => void }} opts
- */
-const promiseSpawn = (command, args, { cwd, onError }) =>
-	new Promise((resolve, reject) => {
-		const childProcess = child_process.spawn(command, args, { cwd });
-
-		/** @type Buffer[] */
-		const chunks = [];
-		childProcess.stderr.on('data', (chunk) => {
-			chunks.push(chunk);
-		});
-		const logErrors = () => {
-			console.error(...chunks.map((buf) => buf.toString('utf-8')));
-		};
-
-		childProcess.on('close', (code) => {
-			if (code === 0) {
-				resolve(0);
-			} else {
-				const error = new Error(`Command exited with code ${code}`);
-				onError(error);
-				logErrors();
-				reject(error);
-			}
-		});
-		childProcess.on('error', (error) => {
-			onError(error);
-			logErrors();
-			reject(error);
-		});
-	});
+const args = parseArgs({
+	options: {
+		skip: { type: 'string', multiple: true, short: 's' },
+		filter: { type: 'string', multiple: true, short: 'f' },
+	},
+});
+const { skip = [], filter } = args.values;
 
 /** Directories containing example projects. */
 const exampleDirs = fs
@@ -51,11 +25,28 @@ const exampleDirs = fs
  * @type {string[]}
  */
 const failures = [];
+/**
+ * Examples that were skipped.
+ * @type {string[]}
+ */
+const skips = [];
+/**
+ * Examples that were successfully built.
+ * @type {string[]}
+ */
+const successes = [];
 
 /** Build each example. */
 for (const dir of exampleDirs) {
 	try {
 		const spinner = ora(dir).start();
+
+		if (skip.includes(dir) || (filter && !filter.includes(dir))) {
+			spinner.stopAndPersist({ symbol: '-', suffixText: dim('skipped') });
+			skips.push(dir);
+			continue;
+		}
+
 		const cwd = path.join('./examples', dir);
 
 		// The examples contain a `package-lock.json` but we want to use PNPM for tests, so we import
@@ -88,6 +79,7 @@ for (const dir of exampleDirs) {
 
 		spinner.suffixText = '';
 		spinner.succeed();
+		successes.push(dir);
 	} catch {
 		failures.push(dir);
 	}
@@ -95,10 +87,48 @@ for (const dir of exampleDirs) {
 
 console.log(
 	'\n\n' +
-		`Successfully built ${exampleDirs.length - failures.length}/${exampleDirs.length} examples.` +
-		'\n\n'
+		` Passed: ${successes.length}\n` +
+		`Skipped: ${skips.length}\n` +
+		` Failed: ${failures.length > 0 ? red(String(failures.length)) : '0'}\n` +
+		'\n'
 );
 
 if (failures.length > 0) {
 	process.exit(1);
+}
+
+/**
+ * @param {string} command
+ * @param {string[]} args
+ * @param {{ cwd: string | URL, onError: (err: Error) => void }} opts
+ */
+function promiseSpawn(command, args, { cwd, onError }) {
+	return new Promise((resolve, reject) => {
+		const childProcess = child_process.spawn(command, args, { cwd });
+
+		/** @type Buffer[] */
+		const chunks = [];
+		childProcess.stderr.on('data', (chunk) => {
+			chunks.push(chunk);
+		});
+		const logErrors = () => {
+			console.error(...chunks.map((buf) => buf.toString('utf-8')));
+		};
+
+		childProcess.on('close', (code) => {
+			if (code === 0) {
+				resolve(0);
+			} else {
+				const error = new Error(`Command exited with code ${code}`);
+				onError(error);
+				logErrors();
+				reject(error);
+			}
+		});
+		childProcess.on('error', (error) => {
+			onError(error);
+			logErrors();
+			reject(error);
+		});
+	});
 }
