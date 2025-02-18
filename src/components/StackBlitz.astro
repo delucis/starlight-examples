@@ -2,29 +2,46 @@
 import type { EmbedOptions } from '@stackblitz/sdk';
 
 interface Props {
-	projectId: string;
+	projectId?: string | undefined;
+	localProjectId?: string | undefined;
 	options: EmbedOptions;
 }
-const { projectId, options } = Astro.props;
+const { projectId, localProjectId, options } = Astro.props;
+
+if (!projectId && !localProjectId) {
+	throw new Error(
+		'Missing props for `<StackBlitz>` component. One of `projectId` or `localProjectId` is required.'
+	);
+}
 ---
 
-<stack-blitz data-project-id={projectId} data-embed-options={JSON.stringify(options)}>
+<stack-blitz
+	data-project-id={projectId}
+	data-local-project-id={localProjectId}
+	data-embed-options={JSON.stringify(options)}
+>
 	<div class="sb-iframe"></div>
 </stack-blitz>
 
 <script>
 	import sdk, { type EmbedOptions } from '@stackblitz/sdk';
+	import { BRANCH } from 'astro:env/client';
 
 	class StackBlitz extends HTMLElement {
 		constructor() {
 			super();
-			const { projectId, embedOptions } = this.dataset;
-			let options: EmbedOptions = {};
-			if (!projectId) return;
+			const { projectId, localProjectId, embedOptions } = this.dataset;
 			try {
-				options = JSON.parse(embedOptions || '{}');
+				const container = this.querySelector('div');
+				if (!container) return;
+				const options: EmbedOptions = JSON.parse(embedOptions || '{}');
+				if (projectId) {
+					sdk.embedProjectId(container, projectId, options);
+				} else if (localProjectId) {
+					const repoPath = `delucis/starlight-examples/tree/${BRANCH}/examples/${localProjectId}`;
+					sdk.embedGithubProject(container, repoPath, options);
+				}
 			} catch {}
-			sdk.embedProjectId(this.querySelector('div')!, projectId, options);
 		}
 	}
 	customElements.define('stack-blitz', StackBlitz);
