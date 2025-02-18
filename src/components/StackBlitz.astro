@@ -34,7 +34,11 @@ if (title) embedUrl.searchParams.set('title', title);
 ---
 
 <div>
-	<iframe class="sb-iframe" src={embedUrl.href} height="300"></iframe>
+	<iframe
+		class="sb-iframe"
+		src={embedUrl.href}
+		height="300"
+		title={`StackBlitz embedded IDE: ${title}`}></iframe>
 </div>
 
 <style>
