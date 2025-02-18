@@ -18,8 +18,6 @@ env:
 
 jobs:
   test:
-    # Skip for now — content layer example can’t fetch required resources in CI
-    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,4 +27,4 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
       - run: pnpm i
-      - run: pnpm t
+      - run: pnpm t -- --skip releases-content-layer
