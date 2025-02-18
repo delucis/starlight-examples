@@ -8,16 +8,14 @@ interface Props {
 	title: string;
 	/** Description of this example to display in the StackBlitz embed. */
 	description?: string;
-	options: {
-		/** Open files to display in the StackBlitz editor. Comma-separated file names are displayed as tabs. An array of file names is displayed as side-by-side panels. */
-		openFile: string | string[];
-		/** Set to true to display a modal and defer loading the project until a user clicks. */
-		clickToLoad?: boolean;
-		/** Set to true to expand the sidebar on load (only works on larger screens). */
-		showSidebar?: boolean;
-	};
+	/** Open files to display in the StackBlitz editor. Comma-separated file names are displayed as tabs. An array of file names is displayed as side-by-side panels. */
+	openFile: string | string[];
+	/** Set to true to display a modal and defer loading the project until a user clicks. */
+	clickToLoad?: boolean;
+	/** Set to true to expand the sidebar on load (only works on larger screens). */
+	showSidebar?: boolean;
 }
-const { localProjectId, title, description, options } = Astro.props;
+const { localProjectId, title, description, openFile, clickToLoad, showSidebar } = Astro.props;
 if (!localProjectId) {
 	throw new Error('Missing props for `<StackBlitz>` component. `localProjectId` is required.');
 }
@@ -26,15 +24,15 @@ const embedUrl = new URL(
 	`https://stackblitz.com/github/delucis/starlight-examples/tree/${HEAD}/examples/${localProjectId}`
 );
 embedUrl.searchParams.set('embed', '1');
-if (Array.isArray(options.openFile)) {
-	for (const file of options.openFile) {
+if (Array.isArray(openFile)) {
+	for (const file of openFile) {
 		embedUrl.searchParams.append('file', file);
 	}
 } else {
-	embedUrl.searchParams.set('file', options.openFile);
+	embedUrl.searchParams.set('file', openFile);
 }
-if (options.clickToLoad) embedUrl.searchParams.set('ctl', '1');
-if (options.showSidebar) embedUrl.searchParams.set('showSidebar', '1');
+if (clickToLoad) embedUrl.searchParams.set('ctl', '1');
+if (showSidebar) embedUrl.searchParams.set('showSidebar', '1');
 if (description) embedUrl.searchParams.set('description', description);
 if (title) embedUrl.searchParams.set('title', title);
 ---
