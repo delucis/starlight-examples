@@ -1,62 +1,49 @@
 ---
-import type { EmbedOptions } from '@stackblitz/sdk';
+import { HEAD } from 'astro:env/client';
 
 interface Props {
-	projectId?: string | undefined;
-	localProjectId?: string | undefined;
-	options: EmbedOptions;
+	localProjectId: string;
+	title: string;
+	description?: string;
+	options: {
+		openFile: string | string[];
+		clickToLoad?: boolean;
+		showSidebar?: boolean;
+	};
 }
-const { projectId, localProjectId, options } = Astro.props;
+const { localProjectId, title, description, options } = Astro.props;
+if (!localProjectId) {
+	throw new Error('Missing props for `<StackBlitz>` component. `localProjectId` is required.');
+}
 
-if (!projectId && !localProjectId) {
-	throw new Error(
-		'Missing props for `<StackBlitz>` component. One of `projectId` or `localProjectId` is required.'
-	);
+const embedUrl = new URL(
+	`https://stackblitz.com/github/delucis/starlight-examples/tree/${HEAD}/examples/${localProjectId}`
+);
+embedUrl.searchParams.set('embed', '1');
+if (Array.isArray(options.openFile)) {
+	for (const file of options.openFile) {
+		embedUrl.searchParams.append('file', file);
+	}
+} else {
+	embedUrl.searchParams.set('file', options.openFile);
 }
+if (options.clickToLoad) embedUrl.searchParams.set('ctl', '1');
+if (options.showSidebar) embedUrl.searchParams.set('showSidebar', '1');
+if (description) embedUrl.searchParams.set('description', description);
+if (title) embedUrl.searchParams.set('title', title);
 ---
 
-<stack-blitz
-	data-project-id={projectId}
-	data-local-project-id={localProjectId}
-	data-embed-options={JSON.stringify(options)}
->
-	<div class="sb-iframe"></div>
-</stack-blitz>
-
-<script>
-	import sdk, { type EmbedOptions } from '@stackblitz/sdk';
-	import { HEAD } from 'astro:env/client';
-
-	class StackBlitz extends HTMLElement {
-		constructor() {
-			super();
-			const { projectId, localProjectId, embedOptions } = this.dataset;
-			try {
-				const container = this.querySelector('div');
-				if (!container) return;
-				const options: EmbedOptions = JSON.parse(embedOptions || '{}');
-				if (projectId) {
-					sdk.embedProjectId(container, projectId, options);
-				} else if (localProjectId) {
-					const repoPath = `delucis/starlight-examples/tree/${HEAD}/examples/${localProjectId}`;
-					sdk.embedGithubProject(container, repoPath, options);
-				}
-			} catch {}
-		}
-	}
-	customElements.define('stack-blitz', StackBlitz);
-</script>
+<div>
+	<iframe class="sb-iframe" src={embedUrl.href} height="300"></iframe>
+</div>
 
 <style>
-	stack-blitz {
-		display: block;
-	}
-
 	.sb-iframe {
 		margin-block: 2rem;
 		border: none;
 		background-color: var(--sl-color-gray-6);
 		box-shadow: var(--sl-shadow-lg);
+		width: 100%;
 		--vheight: 100vh;
 		height: min(
 			calc(var(--vheight) - var(--sl-nav-height) - var(--sl-content-pad-x)),
