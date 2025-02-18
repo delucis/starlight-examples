@@ -1,0 +1,49 @@
+---
+import semver from 'semver';
+
+interface Props {
+  pkgName: string;
+}
+
+const { pkgName } = Astro.props;
+
+async function fetchNpmRegistryData(pkg:string) {
+  const url = `https://registry.npmjs.org/${pkg}/latest`;
+  const response = await fetch(url);
+  return await response.json();
+}
+
+const { name, version, description, dependencies } = await fetchNpmRegistryData(pkgName);
+const dependencyList = Object.entries(dependencies);
+---
+
+<h2>{name}</h2>
+<p>{description}</p>
+<p>Latest version: {version}</p>
+
+{dependencyList.length > 0 && (
+  <h3>Dependencies</h3>
+  <ul>
+    {dependencyList.map(async ([name, versionSpecifier]) => {
+      const { description, version } = await fetchNpmRegistryData(name);
+      const updateAvailable = !semver.satisfies(version, versionSpecifier);
+      return (
+        <li>
+          <p>
+            <strong>{name}</strong> ({versionSpecifier})<br/>
+            {description}
+            {updateAvailable && (
+              <br/><span class="update-alert">⚠️ Newer version available: {version}</span>
+            )}
+          </p>
+        </li>
+      )
+    })}
+  </ul>
+)}
+
+<style>
+.update-alert {
+  color: var(--sl-color-orange-high);
+}
+</style>

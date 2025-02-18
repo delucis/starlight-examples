@@ -1,45 +1,57 @@
 ---
-import type { EmbedOptions } from '@stackblitz/sdk';
+import { HEAD } from 'astro:env/client';
 
 interface Props {
-	projectId: string;
-	options: EmbedOptions;
+	/** Name of the directory in `examples/` that contains the code for this example. */
+	example: string;
+	/** Title for this example to display in the StackBlitz embed. Also used to provide an accessible label for the embed iframe. */
+	title: string;
+	/** Description of this example to display in the StackBlitz embed. */
+	description?: string;
+	/** Open files to display in the StackBlitz editor. Comma-separated file names are displayed as tabs. An array of file names is displayed as side-by-side panels. */
+	openFile: string | string[];
+	/** Set to true to display a modal and defer loading the project until a user clicks. */
+	clickToLoad?: boolean;
+	/** Set to true to expand the sidebar on load (only works on larger screens). */
+	showSidebar?: boolean;
 }
-const { projectId, options } = Astro.props;
+const { example, title, description, openFile, clickToLoad, showSidebar } = Astro.props;
+if (!example) {
+	throw new Error('Missing props for `<StackBlitz>` component. `example` is required.');
+}
+
+const embedUrl = new URL(
+	`https://stackblitz.com/github/delucis/starlight-examples/tree/${HEAD}/examples/${example}`
+);
+embedUrl.searchParams.set('embed', '1');
+if (Array.isArray(openFile)) {
+	for (const file of openFile) {
+		embedUrl.searchParams.append('file', file);
+	}
+} else {
+	embedUrl.searchParams.set('file', openFile);
+}
+if (clickToLoad) embedUrl.searchParams.set('ctl', '1');
+if (showSidebar) embedUrl.searchParams.set('showSidebar', '1');
+if (description) embedUrl.searchParams.set('description', description);
+if (title) embedUrl.searchParams.set('title', title);
 ---
 
-<stack-blitz data-project-id={projectId} data-embed-options={JSON.stringify(options)}>
-	<div class="sb-iframe"></div>
-</stack-blitz>
-
-<script>
-	import sdk, { type EmbedOptions } from '@stackblitz/sdk';
-
-	class StackBlitz extends HTMLElement {
-		constructor() {
-			super();
-			const { projectId, embedOptions } = this.dataset;
-			let options: EmbedOptions = {};
-			if (!projectId) return;
-			try {
-				options = JSON.parse(embedOptions || '{}');
-			} catch {}
-			sdk.embedProjectId(this.querySelector('div')!, projectId, options);
-		}
-	}
-	customElements.define('stack-blitz', StackBlitz);
-</script>
+<div>
+	<iframe
+		class="sb-iframe"
+		src={embedUrl.href}
+		height="300"
+		title={`StackBlitz embedded IDE: ${title}`}></iframe>
+</div>
 
 <style>
-	stack-blitz {
-		display: block;
-	}
-
 	.sb-iframe {
 		margin-block: 2rem;
 		border: none;
 		background-color: var(--sl-color-gray-6);
 		box-shadow: var(--sl-shadow-lg);
+		width: 100%;
 		--vheight: 100vh;
 		height: min(
 			calc(var(--vheight) - var(--sl-nav-height) - var(--sl-content-pad-x)),

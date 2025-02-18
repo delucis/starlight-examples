@@ -1,0 +1,20 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+import { getCollection } from 'astro:content'
+import Release from '../components/Release.astro'
+
+// Query the releases collection to get the recent releases.
+const releases = await getCollection('releases')
+// Loop over the releases to create the table of contents.
+const headings = releases.map((release) => ({
+  slug: release.id,
+  text: release.data.title,
+  depth: 2,
+}))
+---
+
+<StarlightPage frontmatter={{ title: 'Recent Releases' }} {headings}>
+  {
+    releases.map((release) => (<Release {release} />))
+  }
+</StarlightPage>

@@ -1,0 +1,15 @@
+---
+title: Adding icons to UI with CSS
+description: How to use some custom CSS to add an icon to Starlight’s UI
+---
+
+import css from '../../styles.css?raw';
+import { Code } from '@astrojs/starlight/components';
+
+This example demonstrates adding some custom CSS to add an icon to the table of contents “on this page” heading.
+
+This approach uses the [`mask-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image) CSS property to add an icon which uses one of Starlight’s colour variables and the technique can also be applied to other parts of the UI if desired.
+
+## Added styles
+
+<Code code={css} lang="css" title="src/styles.css" />
