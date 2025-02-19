@@ -6,9 +6,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Custom ToC Demo',
-			components: {
-				PageSidebar: './src/overrides/PageSidebar.astro',
-			},
+			routeMiddleware: './src/routeMiddleware.ts',
 		}),
 	],
 });

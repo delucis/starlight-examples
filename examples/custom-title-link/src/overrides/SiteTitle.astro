@@ -1,9 +1,0 @@
----
-import type { Props } from '@astrojs/starlight/props';
-import Default from '@astrojs/starlight/components/SiteTitle.astro';
-
-// Although `site` in `astro.config.mjs` is set to docs.example.com, we override it to go to example.com
-Astro.props.siteTitleHref = 'https://example.com/';
----
-
-<Default {...Astro.props}><slot /></Default>

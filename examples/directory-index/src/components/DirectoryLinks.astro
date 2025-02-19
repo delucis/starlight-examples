@@ -11,10 +11,10 @@ const pages = await getCollection('docs', (entry) => entry.id.startsWith(directo
 ---
 
 <CardGrid>{
-  pages.map(({ data, slug }) => (
+  pages.map(({ data, id }) => (
     <LinkCard
       title={data.title}
-      href={'/' + slug}
+      href={'/' + id}
       description={data.description}
     />
   ))

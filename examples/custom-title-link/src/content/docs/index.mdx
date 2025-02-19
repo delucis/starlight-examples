@@ -6,7 +6,7 @@ hero:
   tagline: This example demonstrates setting a custom link in the site title.
 ---
 
-This example shows how to use a [component override](https://starlight.astro.build/guides/overriding-components/) to set the link in the site title to point somewhere different from where your docs are hosted.
+This example shows how to use [route middleware](https://starlight.astro.build/guides/route-data/#customizing-route-data) to set the link in the site title to point somewhere different from where your docs are hosted.
 
 In `astro.config.mjs` the `site` value should point to where the docs themselves are hosted:
 
@@ -14,4 +14,4 @@ In `astro.config.mjs` the `site` value should point to where the docs themselves
 site: 'https://docs.example.com',
 ```
 
-The custom component at `src/overrides/SiteTitle.astro` overrides this, so that the site title link points to `example.com` instead.
+The route middleware at `src/routeMiddleware.ts` overrides this, so that the site title link points to `example.com` instead.
