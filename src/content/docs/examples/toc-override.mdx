@@ -5,11 +5,11 @@ description: Use the current page title as the title for the table of contents
 
 import StackBlitz from '../../../components/StackBlitz.astro';
 
-This example demonstrates a [component override](https://starlight.astro.build/guides/overriding-components/) of Starlight’s `<PageSidebar>` component to use the page title as the title of the table of contents instead of the default “On this Page” label.
+This example demonstrates using [route middleware](https://starlight.astro.build/guides/route-data/#customizing-route-data) to set the page title as the title of the table of contents instead of the default “Overview” label.
 
 <StackBlitz
 	title="Starlight — overriding table of contents example"
-	description="Example of Starlight with the sidebar overridden so that the first item in the table of contents uses the page title instead of “Overview”."
+	description="Example of Starlight with middleware setting the first item in the table of contents to use the page title instead of “Overview”."
 	example="toc-override"
-	openFile="astro.config.mjs,src/overrides/PageSidebar.astro"
+	openFile="astro.config.mjs,src/routeMiddleware.ts"
 />
