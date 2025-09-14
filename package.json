@@ -19,7 +19,7 @@
     "canvaskit-wasm": "^0.39.1",
     "ora": "^8.2.0",
     "sharp": "^0.34.3",
-    "typescript": "^5.5.3",
+    "typescript": "^5.9.2",
     "yoctocolors": "^2.1.1"
   },
   "packageManager": "pnpm@9.4.0"
