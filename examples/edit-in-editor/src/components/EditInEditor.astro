@@ -1,13 +1,12 @@
 ---
 import url from 'node:url';
-import type { Props } from '@astrojs/starlight/props';
 import context from 'virtual:starlight/project-context';
 import Default from '@astrojs/starlight/components/EditLink.astro';
 import { Icon } from '@astrojs/starlight/components';
 
 // The path to the content file for the current page in the `src/content/docs/` directory.
 const contentPath = url.fileURLToPath(
-	new URL(`content/docs/${Astro.props.entry.id}`, context.srcDir)
+	new URL(`content/docs/${Astro.locals.starlightRoute.entry.id}`, context.srcDir)
 );
 ---
 
@@ -20,7 +19,7 @@ const contentPath = url.fileURLToPath(
 			</button>
 		</edit-button>
 	) : (
-		<Default {...Astro.props}>
+		<Default>
 			<slot />
 		</Default>
 	)
@@ -53,7 +52,7 @@ const contentPath = url.fileURLToPath(
 
 				this.addEventListener('click', () => {
 					// Send a request to the `launch-editor-middleware` exposed by Vite with the file path.
-					fetch(`/__open-in-editor?file=${encodeURIComponent(contentFile)}`)
+					fetch(`/__open-in-editor?file=${encodeURIComponent(contentFile)}`);
 				});
 			}
 		}
