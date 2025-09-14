@@ -6,7 +6,7 @@ import { Icon } from '@astrojs/starlight/components';
 
 // The path to the content file for the current page in the `src/content/docs/` directory.
 const contentPath = url.fileURLToPath(
-	new URL(`content/docs/${Astro.locals.starlightRoute.entry.id}`, context.srcDir)
+	new URL(Astro.locals.starlightRoute.entry.filePath, context.root)
 );
 ---
 
@@ -44,16 +44,14 @@ const contentPath = url.fileURLToPath(
 	customElements.define(
 		'edit-button',
 		class EditButton extends HTMLElement {
-			constructor() {
-				super();
-
-				const contentFile = this.dataset.contentFile;
-				if (!contentFile) return;
-
-				this.addEventListener('click', () => {
-					// Send a request to the `launch-editor-middleware` exposed by Vite with the file path.
-					fetch(`/__open-in-editor?file=${encodeURIComponent(contentFile)}`);
-				});
+			connectedCallback() {
+				const { contentFile } = this.dataset;
+				if (contentFile) {
+					this.addEventListener('click', () => {
+						// Send a request to the `launch-editor-middleware` exposed by Vite with the file path.
+						fetch(`/__open-in-editor?file=${encodeURIComponent(contentFile)}`);
+					});
+				}
 			}
 		}
 	);
