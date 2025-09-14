@@ -1,0 +1,58 @@
+---
+import url from 'node:url';
+import context from 'virtual:starlight/project-context';
+import Default from '@astrojs/starlight/components/EditLink.astro';
+import { Icon } from '@astrojs/starlight/components';
+
+// The path to the content file for the current page in the `src/content/docs/` directory.
+const contentPath = url.fileURLToPath(
+	new URL(Astro.locals.starlightRoute.entry.filePath, context.root)
+);
+---
+
+{
+	import.meta.env.MODE === 'development' ? (
+		<edit-button data-content-file={contentPath}>
+			<button class="sl-flex">
+				<Icon name="pencil" size="1.2em" />
+				Edit in Editor
+			</button>
+		</edit-button>
+	) : (
+		<Default>
+			<slot />
+		</Default>
+	)
+}
+
+<style>
+	edit-button button {
+		align-items: center;
+		background-color: transparent;
+		border: none;
+		color: var(--sl-color-gray-3);
+		cursor: pointer;
+		gap: 0.5rem;
+	}
+
+	edit-button button:hover {
+		color: var(--sl-color-white);
+	}
+</style>
+
+<script>
+	customElements.define(
+		'edit-button',
+		class EditButton extends HTMLElement {
+			connectedCallback() {
+				const { contentFile } = this.dataset;
+				if (contentFile) {
+					this.addEventListener('click', () => {
+						// Send a request to the `launch-editor-middleware` exposed by Vite with the file path.
+						fetch(`/__open-in-editor?file=${encodeURIComponent(contentFile)}`);
+					});
+				}
+			}
+		}
+	);
+</script>
