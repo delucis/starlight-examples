@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# examples test output
+examples/*/pnpm-lock.yaml
+
 # dependencies
 node_modules/
 

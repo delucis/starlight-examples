@@ -1,0 +1,63 @@
+---
+title: Syntax highlight a component’s HTML output
+description: Get started building your docs site with Starlight.
+template: splash
+hero:
+  tagline: This page demonstrates a custom <code>HighlightOutput</code> component that renders the HTML for any elements passed to it as a syntax-highlighted code block.
+---
+
+import HighlightOutput from '../../HighlightOutput.astro';
+
+## Basic example
+
+Here’s a basic usage example with some inline markup passed to the custom `<HighlightOutput>` component:
+
+```mdx
+import HighlightOutput from '../../HighlightOutput.astro';
+
+<HighlightOutput>
+  <div>Test</div>
+</HighlightOutput>
+```
+
+The above MDX code renders as:
+
+<HighlightOutput>
+  <div>Test</div>
+</HighlightOutput>
+
+## Use with a child component
+
+It also works to pass a component instead of inline markup. For example, here we show the HTML for Starlight’s built-in `<Badge>` component:
+
+```mdx
+import { Badge } from '@astrojs/starlight/components;';
+
+<HighlightOutput>
+  <Badge text="Success" variant="success" />
+</HighlightOutput>
+```
+
+The above MDX code renders as:
+
+import { Badge } from '@astrojs/starlight/components';
+
+<HighlightOutput>
+  <Badge text="Success" variant="success" />
+</HighlightOutput>
+
+## Set code props
+
+In this case `<HighlightOutput>` is wrapping Starlight’s built-in `<Code>` component and supports setting its [props](https://expressive-code.com/key-features/code-component/#available-props) too:
+
+```mdx /(?<=<HighlightOutput )(.+)>/
+<HighlightOutput title="badge-example.astro" wrap mark={['sl-badge']}>
+  <Badge text="Success" variant="success" />
+</HighlightOutput>
+```
+
+The above MDX code renders as:
+
+<HighlightOutput title="badge-example.astro" wrap mark={['sl-badge']}>
+  <Badge text="Success" variant="success" />
+</HighlightOutput>

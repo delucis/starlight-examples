@@ -1,0 +1,15 @@
+---
+const { entry, lang, dir } = Astro.locals.starlightRoute;
+---
+
+<html lang={lang} dir={dir}>
+    <head>
+        <title>{entry.data.title}</title>
+    </head>
+    
+    <body>
+        <h1>{entry.data.title}</h1>
+        <p>Hello from the override</p>
+        <main><slot/></main>
+    </body>
+</html>

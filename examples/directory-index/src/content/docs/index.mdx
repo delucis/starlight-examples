@@ -1,0 +1,36 @@
+---
+title: Starlight Demo
+description: Get started building your docs site with Starlight.
+template: splash
+hero:
+  tagline: This demonstrates a DirectoryLinks component which creates a grid of link cards for all pages in a directory.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: View Example
+      link: /guides/
+      icon: right-arrow
+      variant: primary
+---
+
+## Important files
+
+import { FileTree } from '@astrojs/starlight/components';
+
+<FileTree>
+
+- public/
+- src/
+  - assets/
+  - components/
+    - **DirectoryLinks.astro** This component loads the content for a specified directory and renders a grid of links to each page.
+  - content/
+    - docs/
+      - guides/ This folder contains the pages **guides.mdx** lists.
+      - **guides.mdx** This page imports and renders the **DirectoryLinks** component.
+    - config.ts
+  - env.d.ts
+- astro.config.mjs
+- package.json
+
+</FileTree>

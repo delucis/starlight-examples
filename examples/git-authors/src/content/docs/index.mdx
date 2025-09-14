@@ -1,0 +1,34 @@
+---
+title: Page authors demo
+---
+
+This demo shows a component showing page authors loaded from GitHub contribution data
+
+See [Getting started](/en/getting-started) for an example. (The contribution data for this example is being pulled from Astro’s docs.)
+
+## Important files
+
+These are the key files to check out in this demo.
+
+import { FileTree } from '@astrojs/starlight/components';
+
+<FileTree>
+
+- public/
+- src/
+  - components/
+    - **PageAuthors.astro** A component that fetches data from the GitHub REST API and displays authors for a given file.
+    - **Pagination.astro** A component that is used to add PageAuthors to Starlight’s default pagination component.
+  - content/
+    - docs/
+      - **en/** Some fake pages with file names that match Astro Docs so we can get author data for them.
+    - config.ts
+  - env.d.ts
+- **astro.config.mjs** The pagination component override is configured here
+- package.json
+
+</FileTree>
+
+## Key concepts
+
+- [Component overrides](https://starlight.astro.build/guides/overriding-components/) — allows customizing parts of Starlight’s UI.

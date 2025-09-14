@@ -1,0 +1,16 @@
+---
+import { render, type CollectionEntry } from 'astro:content'
+
+interface Props {
+  release: CollectionEntry<'releases'>
+}
+
+// Render the release content.
+const { release } = Astro.props
+const { Content } = await render(release)
+---
+
+<article>
+  <h2 id={release.id}>{release.data.title}</h2>
+  <Content />
+</article>

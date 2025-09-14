@@ -1,0 +1,25 @@
+---
+title: Code snippet component
+description: Component that loads and renders imported code from a folder in your project
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import StackBlitz from '../../../components/StackBlitz.astro';
+import * as importedCode from './imported-code.mdx';
+import * as transclusion from './transclusion.mdx';
+
+This example demonstrates a custom `<Snippet>` component, which renders code blocks using files from the `src/snippets/` directory.
+
+<StackBlitz
+	example="transclusion-code"
+	title="Code snippet component"
+	description="Component that loads and renders imported code from a folder in your project"
+	openFile="src/content/docs/index.mdx,src/components/Snippet.astro"
+/>
+
+## See also
+
+<CardGrid>
+	<LinkCard href="/examples/imported-code/" {...importedCode.frontmatter} />
+	<LinkCard href="/examples/transclusion/" {...transclusion.frontmatter} />
+</CardGrid>

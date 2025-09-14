@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
@@ -35,4 +35,10 @@ export default defineConfig({
 			},
 		}),
 	],
+	env: {
+		schema: {
+			/** @see https://docs.netlify.com/configure-builds/environment-variables/#git-metadata */
+			HEAD: envField.string({ access: 'public', context: 'client', default: 'latest' }),
+		},
+	},
 });

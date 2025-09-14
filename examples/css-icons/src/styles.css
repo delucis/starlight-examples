@@ -1,0 +1,38 @@
+/*
+Add some styles to the ToC heading to help
+with the layout of the added icon.
+*/
+#starlight__on-this-page {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+/* Add a pseudo-element to display the icon. */
+#starlight__on-this-page::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+
+  /*
+  Set the background of the pseudo-element to
+  the desired icon colour.
+  */
+  background-color: var(--sl-color-white);
+
+  /*
+  This is the SVG icon we want, encoded to a `url()`.
+  https://svgencode.com/ is one useful tool for this.
+  */
+  --mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 12H3m13 6H3M16 6H3m18 6h.01M21 18h.01M21 6h.01'/%3E%3C/svg%3E");
+  --mask-size: 100%;
+
+  /*
+  Then mask the background colour using the SVG icon.
+  These properties need -webkit- prefixes for older Safari versions.
+  */
+  -webkit-mask-image: var(--mask-image);
+  mask-image: var(--mask-image);
+  -webkit-mask-size: var(--mask-size);
+  mask-size: var(--mask-size);
+}
