@@ -16,9 +16,6 @@ export default defineConfig({
 			title: 'MathJax Example',
 			// Custom CSS to style MathJax equations
 			customCss: ['./src/mathjax.css'],
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
 		}),
 	],
 });

@@ -6,9 +6,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Transclusion example',
-      social: {
-        github: 'https://github.com/withastro/starlight',
-      },
     }),
   ],
 });
