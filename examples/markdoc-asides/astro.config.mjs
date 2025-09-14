@@ -8,9 +8,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Markdoc Asides',
-      social: {
-        github: 'https://github.com/withastro/starlight',
-      },
     }),
     markdoc(),
   ],

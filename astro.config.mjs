@@ -12,9 +12,9 @@ export default defineConfig({
 		starlight({
 			title: 'Starlight Examples',
 			description: 'Examples of how to do stuff with Astro Starlight',
-			social: {
-				github: 'https://github.com/delucis/starlight-examples',
-			},
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/delucis/starlight-examples' },
+			],
 			editLink: {
 				baseUrl: 'https://github.com/delucis/starlight-examples/edit/latest/',
 			},
