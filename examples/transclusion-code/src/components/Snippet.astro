@@ -1,0 +1,29 @@
+---
+// src/components/Snippet.astro
+import { Code } from '@astrojs/starlight/components';
+import type { ComponentProps } from 'astro/types';
+
+// Mirror Code component prop type, replacing the `code` prop with a `file` prop.
+interface Props extends Omit<ComponentProps<typeof Code>, 'code'> {
+  file: string;
+}
+const { file, ...props } = Astro.props;
+
+// Find all files in the snippets folder and prepare to load their raw text content:
+const snippets = import.meta.glob('../snippets/**/*', { query: '?raw' });
+// Find the snippet for the file specified in props:
+const loadSnippet = snippets[`../snippets/${file}`];
+if (!loadSnippet) {
+  throw new Error(`Could not find snippet "${file}".`);
+}
+// Use the default export of the snippet as the code string:
+const { default: code } = await loadSnippet();
+
+// Infer some useful defaults if not set explicitly.
+// Use the snippet file name as the code block title.
+props.title ??= file;
+// Use the snippet’s file extension as the code block language.
+props.lang ??= file.split('.').pop();
+---
+
+<Code {code} {...props} />

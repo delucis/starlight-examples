@@ -1,0 +1,33 @@
+---
+title: Code snippet component
+description: Example of using a Snippet component to conveniently load code examples from files.
+---
+
+The code snippets below are rendered using a custom `Snippet.astro` component that makes it quick and easy to load code examples from disk.
+
+import Snippet from '../../components/Snippet.astro';
+
+<Snippet file="article-1/example.js" />
+<Snippet file="article-1/example.html" />
+
+MDX syntax used to render the above:
+
+```mdx
+import Snippet from '../../components/Snippet.astro';
+
+<Snippet file="article-1/example.js" />
+<Snippet file="article-1/example.html" />
+```
+
+## Props
+
+The component forwards props on to the underlying [`<Code>` component](https://starlight.astro.build/components/code/), so you can use all [Expressive Code features](https://expressive-code.com/key-features/code-component/#available-props).
+For example, the following MDX code:
+
+```mdx
+<Snippet file="article-1/example.html" mark="Astro" ins={[{ range: '9-11' }]} />
+```
+
+Renders the following code block:
+
+<Snippet file="article-1/example.html" mark="Astro" ins={[{ range: '9-11' }]} />
