@@ -3,7 +3,9 @@ title: Imported code snippets
 description: Import and render syntax highlighted source code
 ---
 
+import { LinkCard } from '@astrojs/starlight/components';
 import StackBlitz from '../../../components/StackBlitz.astro';
+import * as snippetComponent from './transclusion-code.mdx';
 
 This example demonstrates using [Vite’s `?raw` import syntax](https://vitejs.dev/guide/assets.html#importing-asset-as-string) to import source code and how to render it with syntax highlighting using [Starlight’s `<Code>` component](https://starlight.astro.build/guides/components/#code).
 
@@ -13,3 +15,7 @@ This example demonstrates using [Vite’s `?raw` import syntax](https://vitejs.d
 	example="imported-code"
 	openFile="src/example-script.js,src/content/docs/index.mdx"
 />
+
+## See also
+
+<LinkCard href="/examples/transclusion-code/" {...snippetComponent.frontmatter} />
