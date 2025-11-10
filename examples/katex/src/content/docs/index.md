@@ -1,6 +1,6 @@
 ---
 title: Starlight + KaTeX
-description: Example of extending Starlight to support KaTex (LaTeX) math syntax
+description: Example of extending Starlight to support KaTeX (LaTeX) math syntax
 ---
 
 This project sets up the `remark-math` and `rehype-katex` Markdown extensions to add math syntax support.
@@ -10,14 +10,14 @@ This project sets up the `remark-math` and `rehype-katex` Markdown extensions to
 ### Install dependencies
 
 ```sh
-npm install remark-math rehype-katex
+npm install remark-math rehype-katex katex
 ```
 
 ### Configure `astro.config.mjs`
 
 Import the Markdown plugins and use them in Astro’s `markdown` config:
 
-```js
+```js title = "astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
@@ -40,25 +40,13 @@ export default defineConfig({
 
 ### Fix styling
 
-In order to properly display math content, you have to add KateX css file to the head of your pages.
-
-This can be achieved by adding a `head`attribute to your Starlight config in `astro.config.mjs`:
+In order to properly display math content, you have to add KaTeX CSS file to the head of your pages. This can be achieved by declaring the file as a custom CSS file inside your Starlight config in `astro.config.mjs`:
 
 ```js title = 'astro.config.mjs'
 starlight({
 	title: 'KaTeX Example',
-    // Add KaTeX css.
-    head: [
-      {
-        tag: 'link',
-        attrs: {
-     	    rel: 'stylesheet',
-          'href': 'https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.css',
-          integrity: 'sha512-1jSEPj+0P3loEV9Bqx/3V6MXp4SGDSuLZwvwOECspSHwdHhQvGd27PJba8AVpwUldurvLTgzN+oX37uNiwOw==',
-          crossorigin: 'anonymous'
-      },
-  	},
-  ],
+  // Add KaTeX CSS.
+  customCss: ['katex/dist/katex.css'],
 }),
 ```
 

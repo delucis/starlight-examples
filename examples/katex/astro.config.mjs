@@ -14,18 +14,8 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'KaTeX Example',
-      		// Add KaTeX css.
-      		head: [
-        		{
-          			tag: 'link',
-          			attrs: {
-						rel: 'stylesheet',
-						'href': 'https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.css',
-						integrity: 'sha512-1jSEPj+0P3loEV9Bqx/6P3V6MXp4SGDSuLZwvwOECspSHwdHhQvGd27PJba8AVpwUldurvLTgzN+oX37uNiwOw==',
-						crossorigin: 'anonymous'
-          			},
-        		},
-      		],
+			// Add KaTeX css.
+			customCss: ['katex/dist/katex.css'],
 		}),
 	],
 });
