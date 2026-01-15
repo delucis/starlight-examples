@@ -14,6 +14,6 @@
     "@astrojs/starlight": "^0.35.3",
     "astro": "^5.16.9",
     "media-chrome": "^3.2.1",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.5"
   }
 }
