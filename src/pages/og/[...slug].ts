@@ -6,7 +6,7 @@ const pages = Object.fromEntries(entries.map(({ data, id }) => [id, { data }]));
 
 const black: [number, number, number] = [0, 0, 0];
 
-export const { getStaticPaths, GET } = OGImageRoute({
+export const { getStaticPaths, GET } = await OGImageRoute({
 	pages,
 	param: 'slug',
 	getImageOptions: (_path, page: (typeof pages)[number]) => {
