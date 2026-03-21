@@ -1,0 +1,35 @@
+---
+title: Welcome to Starlight
+template: splash
+---
+
+This page demonstrates using custom fonts in Starlight loaded using [Astro Fonts API](https://docs.astro.build/en/guides/fonts/).
+
+This example uses the [Kalam](https://fontsource.org/fonts/kalam) font loaded from [Fontsource](https://fontsource.org/).
+
+## Important files
+
+These are the key files to check out in this demo.
+
+import { FileTree } from "@astrojs/starlight/components";
+
+<FileTree>
+
+- public/
+- src/
+  - components/
+    - **Head.astro** A component override adding the custom font to the page head
+  - content/
+  - styles/
+    - **custom.css** A custom CSS file overriding Starlight's default font
+- **astro.config.mjs** Configuration loading the custom font, and defining a component override and custom CSS file
+- package.json
+
+</FileTree>
+
+## Additional references
+
+- [Starlight documentation](https://starlight.astro.build)
+- [Astro documentation](https://docs.astro.build)
+- [Astro "Using custom fonts" guide](https://docs.astro.build/en/guides/fonts/)
+- [Astro Font Provider API reference](https://docs.astro.build/en/reference/font-provider-reference/)

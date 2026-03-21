@@ -1,0 +1,9 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+import { Font } from "astro:assets";
+---
+
+<!-- Render the default Head component -->
+<Default><slot /></Default>
+<!-- Add the custom font to the head -->
+<Font cssVariable="--font-kalam" preload />
