@@ -1,0 +1,7 @@
+:root {
+  /*
+   * Override Starlight's default font with a custom font.
+   * https://starlight.astro.build/guides/customization/#use-fonts
+   */
+  --sl-font: var(--font-kalam);
+}
