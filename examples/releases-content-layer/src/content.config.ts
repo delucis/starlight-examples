@@ -7,7 +7,7 @@ export const collections = {
   docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
   releases: defineCollection({
     loader: feedLoader({
-      url: 'https://api.cors.lol/?url=https://github.com/withastro/starlight/releases.atom',
+      url: 'https://api.cors.lol/?url=https://github.com/withastro/action/releases.atom',
     }),
   }),
 };
