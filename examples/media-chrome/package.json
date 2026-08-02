@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/starlight": "^0.38.2",
     "astro": "^6.4.8",
-    "media-chrome": "^3.2.5",
+    "media-chrome": "^4.19.2",
     "sharp": "^0.35.3"
   }
 }
