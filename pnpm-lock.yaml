@@ -21,8 +21,8 @@ importers:
         specifier: ^6.4.8
         version: 6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0)
       astro-og-canvas:
-        specifier: ^0.10.1
-        version: 0.10.1(astro@6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0))
+        specifier: ^0.13.0
+        version: 0.13.0(astro@6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0))
       canvaskit-wasm:
         specifier: ^0.41.1
         version: 0.41.1
@@ -968,10 +968,10 @@ packages:
     peerDependencies:
       astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0 || ^6.0.0-beta
 
-  astro-og-canvas@0.10.1:
-    resolution: {integrity: sha512-cUjsWIOkDBi9Bfkgta1Cr45m2UnTX/jW+tK406SVcD1idhqIHrGD+M5qtwGcJ6OanHeWSgyHGmzQuzELGAwPKg==}
+  astro-og-canvas@0.13.0:
+    resolution: {integrity: sha512-jcIDhE9OGIbd7LstZQ4CyzOpbbEKAlxJqEgdkVu6r26m7yJKlQjKysszfDxlox717cnCLPXKivyFjsufcq8sYA==}
     peerDependencies:
-      astro: ^5.0.0 || ^6.0.0-alpha
+      astro: ^5.0.0 || ^6.0.0 || ^7.0.0
 
   astro@6.4.8:
     resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
@@ -996,9 +996,6 @@ packages:
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
-
-  canvaskit-wasm@0.40.0:
-    resolution: {integrity: sha512-Od2o+ZmoEw9PBdN/yCGvzfu0WVqlufBPEWNG452wY7E9aT8RBE+ChpZF526doOlg7zumO4iCS+RAeht4P0Gbpw==}
 
   canvaskit-wasm@0.41.1:
     resolution: {integrity: sha512-gO2rNMIE0lOQ8MaarM4qNeq2zZAEknAObKP2XAKidMSAY8P5sURGdFkrx1TSdHuBFqTf5w35JqjuUzjibqkD5g==}
@@ -1176,9 +1173,9 @@ packages:
     resolution: {integrity: sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==}
     engines: {node: '>=0.12'}
 
-  entities@7.0.1:
-    resolution: {integrity: sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==}
-    engines: {node: '>=0.12'}
+  entities@8.0.0:
+    resolution: {integrity: sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA==}
+    engines: {node: '>=20.19.0'}
 
   es-module-lexer@2.1.0:
     resolution: {integrity: sha512-n27zTYMjYu1aj4MjCWzSP7G9r75utsaoc8m61weK+W8JMBGGQybd43GstCXZ3WNmSFtGT9wi59qQTW6mhTR5LQ==}
@@ -3222,12 +3219,12 @@ snapshots:
       astro: 6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0)
       rehype-expressive-code: 0.41.7
 
-  astro-og-canvas@0.10.1(astro@6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0)):
+  astro-og-canvas@0.13.0(astro@6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0)):
     dependencies:
       astro: 6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0)
-      canvaskit-wasm: 0.40.0
+      canvaskit-wasm: 0.41.1
       deterministic-object-hash: 2.0.2
-      entities: 7.0.1
+      entities: 8.0.0
 
   astro@6.4.8(@types/node@24.13.3)(rollup@4.62.2)(yaml@2.9.0):
     dependencies:
@@ -3337,10 +3334,6 @@ snapshots:
       is-decimal: 2.0.1
 
   boolbase@1.0.0: {}
-
-  canvaskit-wasm@0.40.0:
-    dependencies:
-      '@webgpu/types': 0.1.21
 
   canvaskit-wasm@0.41.1:
     dependencies:
@@ -3487,7 +3480,7 @@ snapshots:
 
   entities@6.0.1: {}
 
-  entities@7.0.1: {}
+  entities@8.0.0: {}
 
   es-module-lexer@2.1.0: {}
 
