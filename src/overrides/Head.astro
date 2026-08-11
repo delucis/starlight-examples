@@ -1,10 +1,10 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro';
 
-// Get the URL of the generated image for the current page using its
-// ID and replace the file extension with `.png`.
+// Get the URL of the generated image for the current page using its ID and
+// append the `.png` file extension.
 const ogImageUrl = new URL(
-	`/og/${Astro.locals.starlightRoute.id.replace(/\.\w+$/, '.png')}`,
+	`/og/${Astro.locals.starlightRoute.id || 'index'}.png`,
 	Astro.site
 );
 ---
