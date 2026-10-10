@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/starlight": "^0.38.2",
+    "@astrojs/starlight": "^0.42.5",
     "@types/node": "^24.19.0",
-    "astro": "^6.4.8",
+    "astro": "^7.3.6",
     "astro-og-canvas": "^0.13.2",
     "canvaskit-wasm": "^0.42.0",
     "ora": "^9.4.1",
