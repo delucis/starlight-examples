@@ -27,7 +27,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
       - run: pnpm i
-      - run: pnpm t -- --skip releases-content-layer
+      - run: pnpm t --skip releases-content-layer
   typecheck:
     runs-on: ubuntu-latest
     steps:
